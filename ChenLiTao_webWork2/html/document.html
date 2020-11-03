@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/document.css">
+    <div class="header">
+        <input type="text" placeholder="请输入个数">
+        <button class="btn">没错！</button>
+    </div>
+    <div class="father">
+        <div class="son">
+        </div>
+    </div>
+    <script>
+        var ipt = document.querySelector('input');
+        var btn = document.querySelector('button');
+        var div = document.querySelector('.father');
+        var son = document.querySelector('.son');
+        console.log(div);
+        btn.onclick = function(){
+            div.innerHTML = '';
+            for(var i = 1; i <= ipt.value;i++ ){
+                div.innerHTML = div.innerHTML+'                        '+'<img src="../iamges/mmexport1604361092490.jpg" alt="">';
+            }
+            var img = document.querySelectorAll('img');
+            for(let j =1 ; j <= ipt.value ; j++){
+                setTimeout(animation,1000*j);   
+                function animation(){
+                    var pos = 0 ;
+                    img[j-1].style.opacity = 1 ;
+                    var end = setInterval(frame,5);
+                    function frame(){
+                        if(pos == 600 ){
+                            clearInterval(end);
+                            img[j-1].style.opacity = 0;
+                        } else {
+                            pos++;
+                            img[j-1].style.bottom = pos +'px';
+                    }
+                    }
+                }
+            }
+        }
+    
+    </script>
+</body>
+</html>
